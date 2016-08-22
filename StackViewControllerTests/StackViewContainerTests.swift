@@ -20,7 +20,7 @@ class StackViewContainerTests: XCTestCase {
         stackViewContainer.separatorViewFactory = StackViewContainer.createSeparatorViewFactory()
     }
     
-    private func contentViewWithTag(tag: Int) -> ContentView {
+    private func contentViewWithTag(_ tag: Int) -> ContentView {
         let contentView = ContentView()
         contentView.tag = tag
         return contentView
@@ -263,17 +263,17 @@ class StackViewContainerTests: XCTestCase {
             contentViewWithTag(2)
         ]
         
-        let assertSeparatorAxes: UILayoutConstraintAxis -> Void = { axis in
+        let assertSeparatorAxes: (UILayoutConstraintAxis) -> Void = { axis in
             let separators: [SeparatorView] = self.stackViewContainer.stackView.arrangedSubviews
-                .filter { $0.isKindOfClass(SeparatorView.self) }
+                .filter { $0.isKind(of: SeparatorView.self) }
                 .map { $0 as! SeparatorView }
             separators.forEach {
                 XCTAssertNotEqual(axis, $0.axis)
             }
         }
         
-        assertSeparatorAxes(.Vertical)
-        stackViewContainer.axis = .Horizontal
-        assertSeparatorAxes(.Horizontal)
+        assertSeparatorAxes(.vertical)
+        stackViewContainer.axis = .horizontal
+        assertSeparatorAxes(.horizontal)
     }
 }

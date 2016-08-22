@@ -25,7 +25,7 @@ class StackViewControllerTests: XCTestCase {
         }
         
         private override func loadView() {
-            view = UIView(frame: CGRectZero)
+            view = UIView(frame: .zero)
             view.tag = tag
         }
     }
@@ -35,8 +35,8 @@ class StackViewControllerTests: XCTestCase {
         stackViewController = StackViewController()
     }
     
-    private func createViewWithTag(tag: Int) -> UIView {
-        let view = UIView(frame: CGRectZero)
+    private func createViewWithTag(_ tag: Int) -> UIView {
+        let view = UIView(frame: .zero)
         view.tag = tag
         return view
     }

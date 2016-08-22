@@ -20,13 +20,13 @@ class ImageAttachmentView: UIView, ImageThumbnailViewDelegate {
     private let stackViewContainer: StackViewContainer
     
     override init(frame: CGRect) {
-        attachButton = UIButton(type: .Custom)
-        attachButton.setBackgroundImage(UIImage(named: "attach-button")!, forState: .Normal)
+        attachButton = UIButton(type: .custom)
+        attachButton.setBackgroundImage(UIImage(named: "attach-button")!, for: UIControlState())
         attachButton.adjustsImageWhenHighlighted = true
         
-        let stackView = UIStackView(frame: CGRectZero)
-        stackView.axis = .Horizontal
-        stackView.alignment = .Bottom
+        let stackView = UIStackView(frame: CGRect.zero)
+        stackView.axis = .horizontal
+        stackView.alignment = .bottom
         
         stackViewContainer = StackViewContainer(stackView: stackView)
         stackViewContainer.addContentView(attachButton)
@@ -46,7 +46,7 @@ class ImageAttachmentView: UIView, ImageThumbnailViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func addImageWithThumbnail(thumbnail: UIImage) {
+    func addImageWithThumbnail(_ thumbnail: UIImage) {
         let thumbnailView = ImageThumbnailView(thumbnail: thumbnail)
         thumbnailView.delegate = self
         stackViewContainer.addContentView(thumbnailView)
@@ -54,7 +54,7 @@ class ImageAttachmentView: UIView, ImageThumbnailViewDelegate {
     
     // MARK: ImageThumbnailViewDelegate
     
-    func imageThumbnailViewDidTapDeleteButton(view: ImageThumbnailView) {
+    func imageThumbnailViewDidTapDeleteButton(_ view: ImageThumbnailView) {
         stackViewContainer.removeContentView(view)
     }
 }
