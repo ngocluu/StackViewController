@@ -36,7 +36,7 @@ private class WrapperViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private override func loadView() {
+    fileprivate override func loadView() {
         view = _view
     }
 }
